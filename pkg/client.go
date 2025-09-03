@@ -25,8 +25,8 @@ func ParseNTPResponse(resp []byte) (string, error) {
 
 }
 
-func Client() ([]byte, error) {
-	conn, err := net.Dial("udp", "pool.ntp.org:123")
+func Client(server string) ([]byte, error) {
+	conn, err := net.Dial("udp", server)
 	if err != nil {
 		return nil, fmt.Errorf("error dialing ntp server: %v", err)
 	}
