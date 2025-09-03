@@ -15,8 +15,24 @@ This repository implements an NTP client that sends out timestamp request, accep
    ```bash
    git clone https://github.com/codescalersinternships/NTP-client-rawan.git
    ```
+## APIs
+
+- `Client(server string) ([]byte, error)` : Interfaces with the server, responsible for dialing, sending the timestamp request and fetches the server response
+- `ParseNTPResponse(resp []byte) (string, error)` : Responsible for parsing the server response into the required format
 
 ## Usage
+
+```go
+    resp, err := pkg.Client(server)
+	if err != nil {
+		panic(err)
+	}
+
+	time, err := pkg.ParseNTPResponse(resp)
+	if err != nil {
+		panic(err)
+	}
+```
 
 ### Flags
 
