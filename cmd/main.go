@@ -9,5 +9,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	println(resp)
+	
+	time, err := pkg.ParseNTPResponse(resp)
+	if err != nil {
+		panic(err)
+	}
+	println("Current time:",time)
 }
